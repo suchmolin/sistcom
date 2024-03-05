@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/sistcom",
-  assetPrefix: "/sistcom/",
+  output: {
+    basePath: "/sistcom",
+  },
 };
 
 export default nextConfig;
