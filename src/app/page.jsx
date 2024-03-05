@@ -6,6 +6,6 @@ import Login from "../components/Login/page";
 
 export default function Home() {
   const { user } = useAuth();
-
+  /****/
   return <>{user ? <HomeLog /> : <Login />}</>;
 }
