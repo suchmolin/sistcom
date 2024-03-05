@@ -1,7 +1,7 @@
 {
   "name": "sistcom",
   "version": "0.1.0",
-  "homepage":"http://suchmolin.github.io/sistcom",
+  "homepage":"http://suchmolin.github.io/sistcom/",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy":"npm run build",
-    "deploy":"gh-pages -d .next"
+    "deploy":"gh-pages -d out"
   },
   "dependencies": {
     "firebase": "^10.8.1",
