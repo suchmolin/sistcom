@@ -13,10 +13,13 @@ export default function HomeLog(props) {
   const [currentPage, setCurrentPage] = useState("inicio");
 
   return (
-    <div className="font-Anta">
+    <div style={{ fontFamily: "Anta" }} className="w-full">
       <HeaderHomeLog />
-      <div className="flex">
-        <MenuHomeLog setCurrentPage={setCurrentPage} />
+      <div className="relative flex">
+        <MenuHomeLog
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
         {currentPage === "agregarmm" ? (
           <AgregarMM />
         ) : currentPage === "inicio" ? (

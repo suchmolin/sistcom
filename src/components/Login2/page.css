@@ -2,7 +2,3 @@
     font-family: 'Anta';
     src: url('/fonts/Anta.ttf');
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

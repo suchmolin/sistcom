@@ -28,7 +28,7 @@ export default function TablaSemanaActual({ addedMM }) {
   }, [userId]);
 
   return (
-    <div>
+    <div className="w-full">
       {/* *****************************TABLAS****************************/}
       <h2 className="w-full text-center mt-4 text-xl">Semana Actual</h2>
       <div className="max-w-sm w-52 ml-10">
@@ -52,7 +52,7 @@ export default function TablaSemanaActual({ addedMM }) {
           <thead className="">
             <tr className="bg-teal-600 text-white text-md h-9">
               <th></th>
-              <th colSpan={5}>Semana 19 FEB</th>
+              <th colSpan={5}>Semana Actual</th>
             </tr>
             <tr className="h-10">
               <th></th>
@@ -66,15 +66,19 @@ export default function TablaSemanaActual({ addedMM }) {
           <tbody>
             {mmList.map((doc, i) => {
               const classTr =
-                doc.fechaProg?.toDate().getDate() === new Date().getDate()
+                doc.fechaProg?.toDate().getDate() === new Date().getDate() &&
+                doc.estado != false
                   ? "bg-red-100"
                   : doc.fechaProg?.toDate().getDate() - 1 ===
-                    new Date().getDate()
+                      new Date().getDate() && doc.estado != false
                   ? "bg-orange-100"
                   : "";
 
               return (
-                <tr key={`tr${doc.id}`} className={`h-8 ${classTr}`}>
+                <tr
+                  key={`tr${doc.id}`}
+                  className={`h-8  text-xs md:text-base ${classTr}`}
+                >
                   <td>
                     <button
                       onClick={() =>

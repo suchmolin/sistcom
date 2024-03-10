@@ -67,8 +67,8 @@ export default function FinalizadosMM() {
           <tbody>
             {mmCurrentClosed.map((doc, i) => {
               return (
-                <tr key={`tr${doc.id}`} className="h-8">
-                  <td>{i + 1}</td>
+                <tr key={`tr${doc.id}`} className="h-8  text-xs md:text-base">
+                  <td className="">{i + 1}</td>
                   <td>{doc.nombreMM}</td>
 
                   <td>
@@ -128,15 +128,8 @@ export default function FinalizadosMM() {
           </thead>
           <tbody>
             {mmLateClosed.map((doc, i) => {
-              const classTr =
-                doc.fechaProg?.toDate().getDate() <= new Date().getDate()
-                  ? "bg-red-100"
-                  : doc.fechaProg?.toDate().getDate() - 1 ===
-                    new Date().getDate()
-                  ? "bg-orange-100"
-                  : "";
               return (
-                <tr key={`tr${doc.id}`} className={`h-8 ${classTr}`}>
+                <tr key={`tr${doc.id}`} className="h-8  text-xs md:text-base">
                   <td>{i + 1}</td>
                   <td>{doc.nombreMM}</td>
 

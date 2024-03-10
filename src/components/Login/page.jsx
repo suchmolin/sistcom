@@ -1,8 +1,8 @@
 "use client";
 import HeaderLogin from "@/components/HeaderLogin/page";
 import { useAuth } from "@/context/AuthContext";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 
 export default function Login() {
   const { user } = useAuth;

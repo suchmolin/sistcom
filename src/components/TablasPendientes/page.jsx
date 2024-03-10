@@ -7,6 +7,8 @@ import { updateDoc, doc, getFirestore } from "firebase/firestore";
 import appFirebase from "@/firebase/firebase.config";
 import { MdOutlineEdit } from "react-icons/md";
 import ModalEditDateProg from "../ModalEditDateProg/page";
+import { FaRegCopy } from "react-icons/fa6";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function TablasPendientes(props) {
   const { clientForList, userId } = props;
@@ -93,9 +95,25 @@ export default function TablasPendientes(props) {
               const minutes = doc.fechaProg?.toDate().getMinutes();
 
               return (
-                <tr key={`tr${doc.id}`} className={`h-8 ${classTr}`}>
+                <tr
+                  key={`tr${doc.id}`}
+                  className={`h-8  text-xs md:text-base ${classTr}`}
+                >
                   <td>{i + 1}</td>
-                  <td>{doc.nombreMM}</td>
+                  <td className="flex justify-center gap-1 items-center">
+                    <span id={`name${doc.id}`}>{doc.nombreMM}</span>
+
+                    <span
+                      onClick={() =>
+                        navigator.clipboard.writeText(
+                          document.getElementById(`name${doc.id}`).innerHTML
+                        )
+                      }
+                      className="hover:text-teal-600 cursor-pointer"
+                    >
+                      <FaRegCopy />
+                    </span>
+                  </td>
                   <td>
                     {doc.fechaProg ? (
                       <div className="flex justify-end">
@@ -174,16 +192,32 @@ export default function TablasPendientes(props) {
                     new Date().getDate()
                   ? "bg-orange-100"
                   : "";
-              const day = doc.fechaProg.toDate().getDate();
-              const month = doc.fechaProg.toDate().getMonth() + 1;
-              const anio = doc.fechaProg.toDate().getYear() - 100;
-              const hours = doc.fechaProg.toDate().getHours();
-              const minutes = doc.fechaProg.toDate().getMinutes();
+              const day = doc.fechaProg?.toDate().getDate();
+              const month = doc.fechaProg?.toDate().getMonth() + 1;
+              const anio = doc.fechaProg?.toDate().getYear() - 100;
+              const hours = doc.fechaProg?.toDate().getHours();
+              const minutes = doc.fechaProg?.toDate().getMinutes();
 
               return (
-                <tr key={`tr${doc.id}`} className={`h-8 ${classTr}`}>
+                <tr
+                  key={`tr${doc.id}`}
+                  className={`h-8  text-xs md:text-base ${classTr}`}
+                >
                   <td>{i + 1}</td>
-                  <td>{doc.nombreMM}</td>
+                  <td className="flex justify-center gap-1 items-center">
+                    <span id={`name${doc.id}`}>{doc.nombreMM}</span>
+
+                    <span
+                      onClick={() =>
+                        navigator.clipboard.writeText(
+                          document.getElementById(`name${doc.id}`).innerHTML
+                        )
+                      }
+                      className="hover:text-teal-600 cursor-pointer"
+                    >
+                      <FaRegCopy />
+                    </span>
+                  </td>
                   <td>
                     {doc.fechaProg ? (
                       <div className="flex justify-end">

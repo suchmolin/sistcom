@@ -18,3 +18,12 @@ const firebaseConfig = {
 const appFirebase = initializeApp(firebaseConfig);
 
 export default appFirebase;
+/*
+ TO TEST BUILD FOLDER ON LOCAL
+ npx firebase emulators:start
+ 
+ TO DEPLOY BUILD FOLDER 
+ npx firebase deploy --only hosting
+ 
+ 
+ */

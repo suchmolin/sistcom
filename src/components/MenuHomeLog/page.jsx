@@ -1,26 +1,24 @@
 import { SlArrowRight } from "react-icons/sl";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
 
 export default function MenuHomeLog(props) {
-  const { logout } = useAuth();
-  const router = useRouter();
-  //if (!user) redirect("/login");
+  const { setCurrentPage, currentPage } = props;
 
-  const setCurrentPage = props.setCurrentPage;
-  const changeMenu = (e) => {
-    setCurrentPage(e.target.id);
-  };
-  const deslog = () => {
-    logout();
-  };
+  const classLi =
+    " border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer items-center";
   return (
-    <div className="relative h-screen hidden md:block md:w-3/12  text-black border-r-2 ">
+    <div
+      id="menuList"
+      className="absolute md:relative top-0 left-0 z-40 bg-white h-screen hidden md:block w-8/12 md:w-3/12  text-black border-r-2 transition-all ease-in-out delay-150"
+    >
       <ul className="">
         <li
-          id="inicio"
-          onClick={changeMenu}
-          className="bg-gray-100 border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer items-center"
+          onClick={() => {
+            setCurrentPage("inicio");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "inicio" ? "bg-gray-100" + classLi : classLi
+          }
         >
           Inicio
           <span className="text-xs">
@@ -28,9 +26,13 @@ export default function MenuHomeLog(props) {
           </span>
         </li>
         <li
-          id="agregarmm"
-          onClick={changeMenu}
-          className="border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer  items-center"
+          onClick={() => {
+            setCurrentPage("agregarmm");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "agregarmm" ? "bg-gray-100" + classLi : classLi
+          }
         >
           Agregar MM
           <span className="text-xs">
@@ -38,9 +40,13 @@ export default function MenuHomeLog(props) {
           </span>
         </li>
         <li
-          id="finalizados"
-          onClick={changeMenu}
-          className="border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer  items-center"
+          onClick={() => {
+            setCurrentPage("finalizados");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "finalizados" ? "bg-gray-100" + classLi : classLi
+          }
         >
           Finalizados{" "}
           <span className="text-xs">
@@ -48,16 +54,20 @@ export default function MenuHomeLog(props) {
           </span>
         </li>
         <li
-          id="clientes"
-          onClick={changeMenu}
-          className="border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer  items-center"
+          onClick={() => {
+            setCurrentPage("clientes");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "clientes" ? "bg-gray-100" + classLi : classLi
+          }
         >
           Clientes
           <span className="text-xs">
             <SlArrowRight />
           </span>
         </li>
-        <li
+        {/*<li
           onClick={() => deslog()}
           className="w-full border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer  items-center"
         >
@@ -65,7 +75,7 @@ export default function MenuHomeLog(props) {
           <span className="text-xs">
             <SlArrowRight />
           </span>
-        </li>
+        </li>*/}
       </ul>
     </div>
   );
