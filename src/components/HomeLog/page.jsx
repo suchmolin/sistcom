@@ -7,6 +7,8 @@ import AgregarMM from "@/components/AgregarMM/page";
 import AgregarClientes from "@/components/AgregarClientes/page";
 import FinalizadosMM from "../FinalizadosMM/page";
 import { useState } from "react";
+import PromosGG from "../PromosGG/page";
+import PagoPromos from "../PagoPromos/page";
 
 export default function HomeLog(props) {
   const { userEmail } = props;
@@ -28,6 +30,10 @@ export default function HomeLog(props) {
           <AgregarClientes userEmail={userEmail} />
         ) : currentPage === "finalizados" ? (
           <FinalizadosMM />
+        ) : currentPage === "promosGG" ? (
+          <PromosGG />
+        ) : currentPage === "pagoPromos" ? (
+          <PagoPromos />
         ) : (
           true
         )}

@@ -67,6 +67,34 @@ export default function MenuHomeLog(props) {
             <SlArrowRight />
           </span>
         </li>
+        <li
+          onClick={() => {
+            setCurrentPage("promosGG");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "promosGG" ? "bg-gray-100" + classLi : classLi
+          }
+        >
+          Promos & GG
+          <span className="text-xs">
+            <SlArrowRight />
+          </span>
+        </li>
+        <li
+          onClick={() => {
+            setCurrentPage("pagoPromos");
+            document.getElementById("menuList").classList.add("hidden");
+          }}
+          className={
+            currentPage === "pagoPromos" ? "bg-gray-100" + classLi : classLi
+          }
+        >
+          Pago Promos
+          <span className="text-xs">
+            <SlArrowRight />
+          </span>
+        </li>
         {/*<li
           onClick={() => deslog()}
           className="w-full border-b-2 px-5 py-4 flex justify-between hover:bg-gray-200 cursor-pointer  items-center"

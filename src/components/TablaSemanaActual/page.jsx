@@ -72,6 +72,8 @@ export default function TablaSemanaActual({ addedMM }) {
                   : doc.fechaProg?.toDate().getDate() - 1 ===
                       new Date().getDate() && doc.estado != false
                   ? "bg-orange-100"
+                  : i % 2 === 0
+                  ? "bg-gray-100"
                   : "";
 
               return (

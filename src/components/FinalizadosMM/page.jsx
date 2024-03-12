@@ -66,8 +66,12 @@ export default function FinalizadosMM() {
           </thead>
           <tbody>
             {mmCurrentClosed.map((doc, i) => {
+              const classTr = i % 2 === 0 ? "bg-gray-100" : "";
               return (
-                <tr key={`tr${doc.id}`} className="h-8  text-xs md:text-base">
+                <tr
+                  key={`tr${doc.id}`}
+                  className={`h-8 ${classTr} text-xs md:text-base`}
+                >
                   <td className="">{i + 1}</td>
                   <td>{doc.nombreMM}</td>
 
@@ -123,13 +127,18 @@ export default function FinalizadosMM() {
               <th>Nombre </th>
 
               <th>Clientes </th>
-              <th>cerrado</th>
+              <th>Creado</th>
+              <th>Cerrado</th>
             </tr>
           </thead>
           <tbody>
             {mmLateClosed.map((doc, i) => {
+              const classTr = i % 2 === 0 ? "bg-gray-100" : "";
               return (
-                <tr key={`tr${doc.id}`} className="h-8  text-xs md:text-base">
+                <tr
+                  key={`tr${doc.id}`}
+                  className={`h-8 ${classTr}   text-xs md:text-base`}
+                >
                   <td>{i + 1}</td>
                   <td>{doc.nombreMM}</td>
 
@@ -139,6 +148,18 @@ export default function FinalizadosMM() {
                         ? client
                         : client + " - ";
                     })}
+                  </td>
+                  <td>
+                    {doc.fechaCreado
+                      ? (() => {
+                          const day = doc.fechaCreado.toDate().getDate();
+                          const month = doc.fechaCreado.toDate().getMonth() + 1;
+                          const anio = doc.fechaCreado.toDate().getYear() - 100;
+                          const hours = doc.fechaCreado.toDate().getHours();
+                          const minutes = doc.fechaCreado.toDate().getMinutes();
+                          return `${day}/${month}/${anio} ${hours}:${minutes}`;
+                        })()
+                      : "- - -"}
                   </td>
                   <td>
                     {doc.fechaCerrado

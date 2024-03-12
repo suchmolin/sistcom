@@ -8,7 +8,6 @@ import appFirebase from "@/firebase/firebase.config";
 import { MdOutlineEdit } from "react-icons/md";
 import ModalEditDateProg from "../ModalEditDateProg/page";
 import { FaRegCopy } from "react-icons/fa6";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function TablasPendientes(props) {
   const { clientForList, userId } = props;
@@ -87,7 +86,10 @@ export default function TablasPendientes(props) {
                   : doc.fechaProg?.toDate().getDate() - 1 ===
                     new Date().getDate()
                   ? "bg-orange-100"
+                  : i % 2 === 0
+                  ? "bg-gray-100"
                   : "";
+
               const day = doc.fechaProg?.toDate().getDate();
               const month = doc.fechaProg?.toDate().getMonth() + 1;
               const anio = doc.fechaProg?.toDate().getYear() - 100;
@@ -114,6 +116,7 @@ export default function TablasPendientes(props) {
                       <FaRegCopy />
                     </span>
                   </td>
+
                   <td>
                     {doc.fechaProg ? (
                       <div className="flex justify-end">
@@ -178,6 +181,7 @@ export default function TablasPendientes(props) {
             <tr className="h-10">
               <th>N°</th>
               <th>Nombre </th>
+              <th>Creado</th>
               <th>Fecha Prog.</th>
               <th>Clientes </th>
               <th>Estado</th>
@@ -217,6 +221,18 @@ export default function TablasPendientes(props) {
                     >
                       <FaRegCopy />
                     </span>
+                  </td>
+                  <td>
+                    {doc.fechaCreado
+                      ? (() => {
+                          const day = doc.fechaCreado.toDate().getDate();
+                          const month = doc.fechaCreado.toDate().getMonth() + 1;
+                          const anio = doc.fechaCreado.toDate().getYear() - 100;
+                          const hours = doc.fechaCreado.toDate().getHours();
+                          const minutes = doc.fechaCreado.toDate().getMinutes();
+                          return `${day}/${month}/${anio} ${hours}:${minutes}`;
+                        })()
+                      : "- - -"}
                   </td>
                   <td>
                     {doc.fechaProg ? (
