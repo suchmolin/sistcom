@@ -85,88 +85,89 @@ export default function PagoPromos() {
     <div className="flex flex-col w-full relative">
       <div className="pb-7 border-b-2 w-full h-fit md:px-10">
         <h2 className="w-full text-center my-4 text-xl">Pago de Promos</h2>
-        <div className="w-ffull h-full">
-          <form
-            action="#"
-            className="flex items-center gap-5 justify-between"
-            onSubmit={searchPagoPromo}
-          >
-            <div className="flex gap-2 items-center">
-              <select
-                onChange={(e) => setSelectClient(e.target.value)}
-                className="h-fit bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2.5 "
-              >
-                <option key="select" value={null}>
-                  Selecciona un Cliente
-                </option>
-                {clientList.map((doc, id) => (
-                  <option key={`select${id}`} value={doc.client}>
-                    {doc.client}
-                  </option>
-                ))}
-              </select>
-              <div className="flex gap-2">
-                <label htmlFor="month">Mes:</label>
-                <input
-                  required
-                  type="month"
-                  onChange={changedMonth}
-                  value={monthInput}
-                  className="ring-2 rounded-sm h-8 pl-2 ring-teal-700"
-                />
-              </div>
-              <button className="ml-10 px-3 py-2 bg-teal-600 text-white rounded-sm hover:bg-teal-500">
-                Buscar
-              </button>
-            </div>
-          </form>
-          {/**************************** TABLA PAGO DE PROMO********************* */}
 
-          <div className="w-full border-r-2 my-10">
-            <table className="table-auto w-full text-center ">
-              <thead className="">
-                <tr className="bg-teal-600 text-white text-md h-9">
-                  <th colSpan={6}>
-                    PROMOS {meses[new Date(monthInput).getMonth() + 1]}
-                  </th>
-                </tr>
-                <tr className="h-10">
-                  <th>Modelo</th>
-                  <th>Fans</th>
-                  <th>Fecha Pago</th>
-                  <th>Comision</th>
-                </tr>
-              </thead>
-              <tbody>
-                {modelsList.map((model, i) => {
-                  const classTr = i % 2 === 0 ? "bg-gray-100" : "";
-                  return (
-                    <tr className={`h-8 ${classTr}`} key={model.id}>
-                      <td>{model.model}</td>
-                      <td>{model.acord}</td>
-                      <td>
-                        {model.fechaPago
-                          ? (() => {
-                              const day = model.fechaPago.toDate().getDate();
-                              const month =
-                                meses[model.fechaPago.toDate().getMonth()];
-                              return `${day} ${month}`;
-                            })()
-                          : "- - -"}
-                      </td>
-                      <td>{model.comision}$</td>
-                    </tr>
-                  );
-                })}
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td className="font-bold">Total</td>
-                  <td className="border-2 border-teal-700">{totalCom}$</td>
-                </tr>
-              </tbody>
-            </table>
+        <form
+          action="#"
+          className="flex flex-col md:flex-row gap-5 md:items-center"
+          onSubmit={searchPagoPromo}
+        >
+          <div className="w-full md:w-fit flex justify-center">
+            <select
+              onChange={(e) => setSelectClient(e.target.value)}
+              className="h-fit w-fit bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2.5 "
+            >
+              <option key="select" value={null}>
+                Selecciona un Cliente
+              </option>
+              {clientList.map((doc, id) => (
+                <option key={`select${id}`} value={doc.client}>
+                  {doc.client}
+                </option>
+              ))}
+            </select>
           </div>
+          <div className="flex gap-2 justify-center">
+            <label htmlFor="month">Mes:</label>
+            <input
+              required
+              type="month"
+              onChange={changedMonth}
+              value={monthInput}
+              className="ring-2 rounded-sm h-8 pl-2 ring-teal-700"
+            />
+          </div>
+          <div className="flex justify-center">
+            <button className="w-fit px-3 py-2 bg-teal-600 text-white rounded-sm hover:bg-teal-500">
+              Buscar
+            </button>
+          </div>
+        </form>
+        {/**************************** TABLA PAGO DE PROMO********************* */}
+
+        <div className="w-full border-r-2 my-10">
+          <table className="table-auto w-full text-center ">
+            <thead className="">
+              <tr className="bg-teal-600 text-white text-md h-9">
+                <th colSpan={6}>
+                  PROMOS {meses[new Date(monthInput).getMonth() + 1]}
+                </th>
+              </tr>
+              <tr className="h-10">
+                <th>Modelo</th>
+                <th>Fans</th>
+                <th>Fecha Pago</th>
+                <th>Comision</th>
+              </tr>
+            </thead>
+            <tbody>
+              {modelsList.map((model, i) => {
+                const classTr = i % 2 === 0 ? "bg-gray-100" : "";
+                return (
+                  <tr className={`h-8 ${classTr}`} key={model.id}>
+                    <td>{model.model}</td>
+                    <td>{model.acord}</td>
+                    <td>
+                      {model.fechaPago
+                        ? (() => {
+                            const day = model.fechaPago.toDate().getDate();
+                            const month =
+                              meses[model.fechaPago.toDate().getMonth()];
+                            return `${day} ${month}`;
+                          })()
+                        : "- - -"}
+                    </td>
+                    <td>{model.comision}$</td>
+                  </tr>
+                );
+              })}
+              <tr>
+                <td></td>
+                <td></td>
+                <td className="font-bold">Total</td>
+                <td className="border-2 border-teal-700">{totalCom}$</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

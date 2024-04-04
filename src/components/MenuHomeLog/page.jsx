@@ -8,7 +8,7 @@ export default function MenuHomeLog(props) {
   return (
     <div
       id="menuList"
-      className="absolute md:relative top-0 left-0 z-40 bg-white h-screen hidden md:block w-8/12 md:w-3/12  text-black border-r-2 transition-all ease-in-out delay-150"
+      className="absolute md:relative top-0 left-0 z-40 bg-white h-full hidden md:block w-8/12 md:w-3/12  text-black border-r-2 transition-all ease-in-out delay-150"
     >
       <ul className="">
         <li

@@ -1,5 +1,17 @@
+import { doc, deleteDoc, getFirestore } from "firebase/firestore";
+import appFirebase from "@/firebase/firebase.config";
+import getListModels from "@/getListModels";
+
 export default function ModelsClosed(props) {
-  const { closedList } = props;
+  const { closedList, setModelsList, clientForList, userId } = props;
+
+  const db = getFirestore(appFirebase);
+
+  const deleteModel = async (id) => {
+    await deleteDoc(doc(db, "promosgg", id));
+    getListModels(userId, clientForList, setModelsList);
+  };
+
   return (
     <div className="py-4 mt-10 border-b-2 w-full md:px-10">
       <table className="table-auto w-full text-center ">
@@ -8,6 +20,7 @@ export default function ModelsClosed(props) {
             <th colSpan={5}>Modelos finalizadas</th>
           </tr>
           <tr className="h-10">
+            <th></th>
             <th>Modelo </th>
             <th>act / fin.</th>
             <th>Fecha Cierre</th>
@@ -25,6 +38,14 @@ export default function ModelsClosed(props) {
 
             return (
               <tr key={`tr${model.id}`} className={`h-8 ${classTr}`}>
+                <td>
+                  <span
+                    onClick={() => deleteModel(model.id)}
+                    className="hover:text-red-500 cursor-pointer"
+                  >
+                    x
+                  </span>
+                </td>
                 <td className="flex justify-center gap-1 items-center">
                   <span>{model.model}</span>
                 </td>

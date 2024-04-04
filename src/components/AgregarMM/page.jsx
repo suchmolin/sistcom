@@ -55,17 +55,19 @@ export default function AgregarMM() {
         <form
           onSubmit={addMini}
           action="#"
-          className="w-full flex justify-between items-center"
+          className=" flex flex-col items-center"
         >
-          <label htmlFor="nombre">Nombre</label>
-          <input
-            required
-            onChange={(e) => setMMInput(e.target.value)}
-            value={mmInput}
-            type="text"
-            className="ring-2 rounded-sm ml-2 w-96"
-          />
-          <div className="ml-4">
+          <div className="w-ffull flex items-center mb-4">
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              required
+              onChange={(e) => setMMInput(e.target.value)}
+              value={mmInput}
+              type="text"
+              className="ring-2 rounded-sm ml-2 w-72 px-2 ring-teal-700"
+            />
+          </div>
+          <div className="mb-4">
             {
               /******************************CHECKBOXES***************************************************** */
 
@@ -90,7 +92,7 @@ export default function AgregarMM() {
               })
             }
           </div>
-          <button className="ml-10 px-3 py-2 bg-teal-600 text-white rounded-sm hover:bg-teal-500">
+          <button className="px-3 py-2 bg-teal-600 text-white rounded-sm hover:bg-teal-500">
             Guardar
           </button>
         </form>

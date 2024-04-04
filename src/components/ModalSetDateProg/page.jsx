@@ -43,7 +43,7 @@ export default function ModalSetDateProg(props) {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full flex justify-center items-center">
       <div className="absolute left-0 top-0 h-screen w-full bg-gray-100 opacity-80 z-10"></div>
       <div className="p-16 rounded-sm flex flex-col  items-center mt-40 bg-white z-20">
         <h3 className="text-center my-4 text-xl">

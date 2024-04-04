@@ -66,6 +66,26 @@ export default function ListPromoGG(props) {
     });
     setModalEditModel(true);
   };
+  const editModelCountGG = (
+    id,
+    model,
+    actual,
+    acord,
+    extra,
+    actualSec,
+    acordSec
+  ) => {
+    setRowEdit({
+      id: id,
+      model: model,
+      actual: actual,
+      actualSec: actualSec,
+      acord: acord,
+      acordSec: acordSec,
+      extra: extra,
+    });
+    setModalEditModel(true);
+  };
 
   const deteleModel = (id, client, model) => {
     setRowEdit({ id: id, client: client, model: model });
@@ -196,6 +216,7 @@ export default function ListPromoGG(props) {
                     <th></th>
                     <th>Modelo</th>
                     <th>Act/Fin</th>
+                    <th>ActM/FinM</th>
                     <th>Prog</th>
                     <th></th>
                   </tr>
@@ -219,15 +240,20 @@ export default function ListPromoGG(props) {
                         <td>
                           {model.actual}/{model.acord}
                         </td>
+                        <td>
+                          {model.actualSec}/{model.acordSec}
+                        </td>
                         <td>{model.extra}</td>
                         <td
                           onClick={() =>
-                            editModelCount(
+                            editModelCountGG(
                               model.id,
                               model.model,
                               model.actual,
                               model.acord,
-                              model.extra
+                              model.extra,
+                              model.actualSec,
+                              model.acordSec
                             )
                           }
                           className=""
@@ -243,7 +269,12 @@ export default function ListPromoGG(props) {
               </table>
             </div>
           </div>
-          <ModelsClosed closedList={closedList} />
+          <ModelsClosed
+            closedList={closedList}
+            setModelsList={setModelsList}
+            clientForList={clientForList}
+            userId={userId}
+          />
         </div>
       )}
       {modalDeleteModel && (
